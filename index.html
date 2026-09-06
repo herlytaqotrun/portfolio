@@ -305,26 +305,26 @@ const DATA = {
     {
       role:    "Learning Enablement Executive",
       company: "PT. Revolusi Cita Edukasi — Jakarta",
-      period:  "Nov 2021 – May 2026",
-      desc:    "Developed 5+ training programs for 500+ active learners. Improved LMS satisfaction scores to 80% through evaluation-based content refinement. Analyzed program effectiveness using data & user feedback, achieving 4.8/5.0 satisfaction.",
+      period:  "Nov 2025 – May 2026",
+      desc:    "Developed training content for 5+ programs, facilitating self-directed learning for 500+ active participants. Managed learner engagement on LMS and webinar sessions, driving learning activity rates up to 85%. Evaluated program quality using data & feedback, maintaining a 4.8/5.0 satisfaction index.",
     },
     {
       role:    "Creative Media",
-      company: "Freelance — Sidoarjo",
+      company: "Linkhub — Subang",
       period:  "Oct 2024 – Sep 2025",
-      desc:    "Handled creative projects for 10+ clients across graphic design, video, and social media — maintaining 95% client satisfaction. Managed content calendars and team workflows producing 50+ media assets/month. Leveraged performance data to redesign paid campaign strategies.",
+      desc:    "Led creative project execution for 10+ clients (graphic, video, print) maintaining 90% client satisfaction. Built content calendars and team workflows, ensuring on-time production and delivery of 50+ media assets/month. Evaluated post-campaign performance insights and delivered strategy reports to clients within 24 hours.",
     },
     {
       role:    "Fullstack Developer Intern",
       company: "Adiva Solution — Cirebon",
-      period:  "Jul 2023 – Aug 2023",
-      desc:    "Built 3+ core web application modules (Laravel & React.js) and stabilized the system to production. Integrated RESTful APIs and optimized database queries to achieve sub-1s response time. Maintained 99% system uptime through regular testing and debugging.",
+      period:  "Jul 2023 – Nov 2023",
+      desc:    "Developed 3+ core web application modules (Laravel & React.js), ensuring the system was production-ready. Integrated RESTful APIs and optimized database queries, reducing response time to under 1 second. Performed regular testing and debugging, minimizing production bugs and maintaining 99% system uptime.",
     },
     {
       role:    "Content Specialist",
-      company: "Kantor Desa — Jakarta",
+      company: "Korea Bae — Jakarta",
       period:  "Feb 2020 – Aug 2022",
-      desc:    "Produced and edited video content for YouTube, growing to 10,000+ views/month. Managed web article publishing & SEO optimization reaching 5,000+ active readers/month. Developed multi-platform content distribution strategies across web & YouTube.",
+      desc:    "Produced regular video content for a YouTube channel, averaging 10,000+ views per video. Managed web article publishing and SEO optimization, growing the audience to 5,000+ active monthly readers.",
     },
   ],
 
@@ -353,33 +353,6 @@ const DATA = {
     { icon: "🌐", name: "Junior Web Development",               issuer: "BNSP — Badan Nasional Sertifikasi Profesi — 2022" },
     { icon: "🔌", name: "Junior Network Administrator",         issuer: "BNSP — Badan Nasional Sertifikasi Profesi — 2022" },
     { icon: "🗄️", name: "Data Management Staff",               issuer: "BNSP — Badan Nasional Sertifikasi Profesi — 2023" },
-  ],
-
-  /* ──────────────────────────────────────────────
-     🖼️ SHOWCASE
-  ────────────────────────────────────────────── */
-  showcase: [
-    {
-      type:  "photo",
-      label: "Kegiatan",
-      title: "I/O Festival UNTAR 2024 — 2nd Place",
-      desc:  "Momen menerima penghargaan 2nd Place National Web Development Competition.",
-      image: "",
-    },
-    {
-      type:  "photo",
-      label: "Screenshot App",
-      title: "Web App — Adiva Solution",
-      desc:  "Tampilan web application fullstack yang dibangun dengan Laravel & React.js.",
-      image: "",
-    },
-    {
-      type:  "github",
-      title: "Portfolio Website",
-      desc:  "Personal portfolio website built with pure HTML, CSS & JavaScript. Clean dark mode design.",
-      link:  "https://github.com/herlytaqotrun/portfolio",
-      tags:  ["HTML", "CSS", "JavaScript"],
-    },
   ],
 
   /* ──────────────────────────────────────────────
@@ -570,22 +543,6 @@ const DATA = {
     <div class="cert-list" id="cert-list"></div>
   </div>
 </section>
-<!-- SHOWCASE -->
-<section id="showcase">
-  <div class="container">
-    <span class="section-label fade-up">Hasil Nyata</span>
-    <h2 class="section-title fade-up">Showcase</h2>
-    <p class="section-desc fade-up">Foto kegiatan, screenshot project, dan repository GitHub — bukti nyata karya saya.</p>
-    <div class="showcase-grid" id="showcase-grid"></div>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
-  <img id="lb-img" src="" alt="" />
-  <div class="lb-caption" id="lb-caption"></div>
-</div>
 
 <!-- PORTFOLIO CTA -->
 <section style="padding:6rem 0;background:linear-gradient(135deg,rgba(34,211,238,.08) 0%,rgba(52,211,153,.08) 100%);border-top:1px solid var(--border);text-align:center;">
@@ -703,48 +660,6 @@ $('cert-list').innerHTML = DATA.certifications.map(c =>
   </div>`
 ).join('');
 
-// Showcase
-$('showcase-grid').innerHTML = DATA.showcase.map(s => {
-  if (s.type === 'github') {
-    return `<a class="sc-repo-card fade-up" href="${s.link}" target="_blank" rel="noopener">
-      <div class="sc-repo-top">
-        <span style="font-size:1.4rem">💻</span>
-        <div>
-          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">GitHub Repository</div>
-          <div class="sc-repo-name">${s.title}</div>
-        </div>
-      </div>
-      <div class="sc-repo-desc">${s.desc}</div>
-      <div class="sc-repo-meta">${s.tags.map(t=>`<span class="sc-repo-tag">${t}</span>`).join('')}</div>
-      <div class="sc-repo-arrow">→ Lihat di GitHub</div>
-    </a>`;
-  }
-  const hasImg = s.image && s.image.trim() !== '';
-  const imgEl  = hasImg
-    ? `<img class="sc-img-thumb" src="${s.image}" alt="${s.title}" onclick="openLightbox('${s.image}','${s.title}')" />`
-    : `<div class="sc-img-placeholder"><span class="pl-icon">🖼️</span><span>Foto belum ditambahkan</span></div>`;
-  return `<div class="sc-img-card fade-up">
-    ${imgEl}
-    <div class="sc-img-body">
-      <div class="sc-type">${s.label}</div>
-      <div class="sc-title">${s.title}</div>
-      <div class="sc-desc">${s.desc}</div>
-    </div>
-  </div>`;
-}).join('');
-
-// Lightbox
-function openLightbox(src, caption) {
-  $('lb-img').src = src;
-  $('lb-caption').textContent = caption;
-  $('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  $('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
 
 // Footer
 $('footer-name').textContent = DATA.name;
