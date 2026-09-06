@@ -394,59 +394,65 @@ const DATA = {
 
   /* ──────────────────────────────────────────────
      ⭐ WHAT I DO BEST
-     badge   = label kecil di atas (misal: "Production Ready")
-     number  = nomor urut "01", "02", dst
+     badge   = label kecil di atas (misal: "Top Performing")
+     number  = "01", "02", dst
      title   = nama keahlian
-     desc    = deskripsi singkat kemampuan kamu
-     tools   = daftar tools / teknologi
+     desc    = deskripsi — tulis kayak kamu ngomong langsung
+     tools   = daftar tools / teknologi kamu
   ────────────────────────────────────────────── */
   whatIdo: [
     {
-      badge:  "Production Ready",
+      badge:  "Top Performing",
       number: "01",
-      title:  "Web Application Engineering",
-      desc:   "I build modular, fullstack web applications from frontend to backend. Every system I deliver runs fast, stays stable, and scales with real users — including 99% uptime in production environments.",
-      tools:  ["Laravel", "React.js", "RESTful APIs", "PHP", "JavaScript", "MySQL", "Git & GitHub"],
+      title:  "Web Development",
+      desc:   "I build responsive, reliable web applications from frontend to backend — clean code, fast load, and real results. I've shipped production systems with 99% uptime and sub-second API response times. Every line of code is written with performance and the user in mind.",
+      tools:  ["Laravel", "React.js", "PHP", "JavaScript", "HTML & CSS", "MySQL", "RESTful APIs", "Git & GitHub"],
     },
     {
-      badge:  "Data Driven Decisions",
+      badge:  "Data-Backed Decisions",
       number: "02",
-      title:  "Data Analytics & Insights",
-      desc:   "I turn raw data into clear, actionable insights. From SQL queries to visual dashboards, I help teams understand what's working and what needs to change — backed by real numbers.",
-      tools:  ["Python", "SQL", "MySQL", "Google Analytics", "Meta Insights", "Data Visualization"],
+      title:  "Data Analytics",
+      desc:   "I turn messy data into clear decisions. From writing SQL queries to reading Google Analytics dashboards, I help teams understand what's actually happening — and what to do next. Certified Full Stack Data Analyst by RevoU.",
+      tools:  ["Python", "SQL", "MySQL", "Google Analytics", "Meta Insights", "Data Visualization", "Spreadsheet Analysis"],
     },
     {
-      badge:  "Scaling Education",
+      badge:  "Scaling Impact",
       number: "03",
       title:  "Digital Learning & LMS",
-      desc:   "I design, manage, and scale digital learning ecosystems. I've served 500+ active users with a 4.8/5.0 satisfaction score by optimizing workflows, content, and user experience across LMS platforms.",
-      tools:  ["LMS Administration", "Digital Content", "Workflow Automation", "User Experience", "Instructional Design"],
-    },
-    {
-      badge:  "Cloud & AI Ready",
-      number: "04",
-      title:  "Cloud Fundamentals & AI",
-      desc:   "Certified in Microsoft Azure AI Fundamentals, I bring cloud and AI awareness to every project — from understanding AI services to deploying web apps on modern cloud infrastructure.",
-      tools:  ["Microsoft Azure", "AI-900 Certified", "Cloud Services", "API Integration"],
+      desc:   "I manage and scale digital learning platforms that people actually love to use. I've grown LMS ecosystems to 500+ active users with a 4.8/5.0 satisfaction score — by fixing what's broken, automating what's manual, and designing what's missing.",
+      tools:  ["LMS Administration", "Digital Content Design", "Workflow Automation", "User Onboarding", "Learning Experience Design"],
     },
     {
       badge:  "Full Stack",
-      number: "05",
-      title:  "End-to-End Digital Solutions",
-      desc:   "From ideation to deployment, I deliver complete digital solutions. Whether it's a national competition-winning web app or an enterprise system — I handle both the technical depth and the human side.",
-      tools:  ["System Architecture", "UI/UX Thinking", "Performance Optimization", "RESTful Design", "Agile Workflow"],
+      number: "04",
+      title:  "End-to-End Engineering",
+      desc:   "From idea to deployment — I handle both sides of the stack. I've built complete web systems for enterprise clients and won a national web competition (2nd Place, I/O Festival UNTAR 2024). I work fast, think end-to-end, and deliver things that actually run.",
+      tools:  ["System Architecture", "Frontend + Backend", "API Design", "Database Design", "Performance Optimization", "Deployment"],
     },
-    // Tambah keahlian baru? Salin blok di atas dan paste di sini!
+    {
+      badge:  "Cloud & AI Ready",
+      number: "05",
+      title:  "Cloud & AI Fundamentals",
+      desc:   "Certified in Microsoft Azure AI Fundamentals (AI-900). I understand how AI services work and how to integrate cloud infrastructure into modern web applications — keeping systems scalable, secure, and future-ready.",
+      tools:  ["Microsoft Azure", "AI-900 Certified", "Cloud Services", "API Integration", "Serverless Concepts"],
+    },
+    {
+      badge:  "National Recognition",
+      number: "06",
+      title:  "Competitive & Academic Excellence",
+      desc:   "Graduated as Valedictorian with a 3.81/4.00 GPA and earned 2nd Place at the National Web Development Competition. I bring both academic rigor and real competitive experience — tested under pressure, proven with results.",
+      tools:  ["BNSP Web Development Certified", "RevoU Data Analyst", "Azure AI-900", "Valedictorian", "I/O Festival UNTAR 2024"],
+    },
   ],
 
   /* ──────────────────────────────────────────────
-     🎯 TICKER — teks berjalan otomatis di antara section
-     Tambah atau hapus kata sesuai keinginan
+     🎯 TICKER — teks berjalan di antara section
   ────────────────────────────────────────────── */
   ticker: [
-    "Web Engineering", "Data Analytics", "Laravel", "React.js",
-    "Python", "SQL", "LMS", "Azure AI", "RESTful APIs",
-    "Digital Innovation", "Full Stack", "Open to Work",
+    "Web Development", "Data Analytics", "Laravel", "React.js",
+    "Python", "SQL", "LMS Specialist", "Azure AI Certified",
+    "RESTful APIs", "Full Stack", "Valedictorian", "Open to Work",
+    "BNSP Certified", "Digital Innovation", "2nd Place National",
   ],
 
 };
@@ -519,9 +525,9 @@ const DATA = {
 <section id="whatido">
   <div class="container">
     <span class="section-label fade-up">What I Do Best</span>
-    <h2 class="section-title fade-up">My Expertise</h2>
+    <h2 class="section-title fade-up">What I do best?</h2>
     <div class="whatido-intro fade-up">
-      <p>I bridge web engineering, data analytics, and digital education — building systems that work, insights that matter, and learning experiences that scale.</p>
+      <p>I build web systems, read data, and scale digital learning — creating reliable technology solutions, data-driven insights, and digital experiences that help organizations grow and make a real impact.</p>
     </div>
     <div class="whatido-list" id="whatido-list"></div>
   </div>
