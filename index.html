@@ -1,122 +1,53 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Herlyta Qotrun Nada — Portfolio</title>
+  <title id="page-title">Portfolio</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:       #0f172a;
-      --bg2:      #1e293b;
-      --bg3:      #162032;
-      --border:   #2d3e55;
-      --cyan:     #22d3ee;
-      --cyan-dim: #0e7490;
-      --emerald:  #34d399;
-      --text:     #e2e8f0;
-      --muted:    #94a3b8;
-      --card-bg:  #172033;
-      --radius:   14px;
-      --nav-h:    64px;
+      --bg: #0f172a; --bg2: #1e293b; --bg3: #162032;
+      --border: #2d3e55; --cyan: #22d3ee; --cyan-dim: #0e7490;
+      --emerald: #34d399; --text: #e2e8f0; --muted: #94a3b8;
+      --card-bg: #172033; --radius: 14px; --nav-h: 64px;
     }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; overflow-x: hidden; }
     a { color: var(--cyan); text-decoration: none; }
     a:hover { text-decoration: underline; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--cyan-dim); border-radius: 4px; }
 
-    /* ── Nav ── */
-    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: rgba(15,23,42,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,5vw,3rem); }
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: rgba(15,23,42,.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,5vw,3rem); }
     .nav-logo { font-weight: 800; font-size: 1.15rem; background: linear-gradient(90deg,var(--cyan),var(--emerald)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-links { display: flex; gap: 1.75rem; list-style: none; }
     .nav-links a { color: var(--muted); font-size: .88rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--cyan); text-decoration: none; }
     .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
-    @media(max-width:768px) {
-      .nav-toggle { display: flex; }
-      .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(15,23,42,.97); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; gap: 1rem; }
-      .nav-links.open { display: flex; }
-    }
+    @media(max-width:768px) { .nav-toggle{display:flex} .nav-links{display:none;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:rgba(15,23,42,.97);border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;gap:1rem} .nav-links.open{display:flex} }
 
-    /* ── Hero ── */
+    /* HERO */
     section { position: relative; z-index: 1; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem,5vw,2.5rem); }
-    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: var(--nav-h); background: radial-gradient(ellipse 70% 60% at 50% 0%,rgba(34,211,238,.1) 0%,transparent 65%), radial-gradient(ellipse 50% 40% at 80% 80%,rgba(52,211,153,.07) 0%,transparent 55%), var(--bg); text-align: center; }
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: var(--nav-h); background: radial-gradient(ellipse 70% 60% at 50% 0%,rgba(34,211,238,.1) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(52,211,153,.07) 0%,transparent 55%),var(--bg); text-align: center; }
     .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size: 60px 60px; opacity: .18; pointer-events: none; }
 
-    /* ── Profile Picture ── */
-    /* ── Avatar / Profile Picture ── */
-    .avatar-wrap {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 2rem;
-    }
-    /* Rotating gradient ring */
-    .avatar-ring {
-      position: absolute;
-      inset: -5px;
-      border-radius: 50%;
-      background: conic-gradient(var(--cyan), var(--emerald), #818cf8, var(--cyan));
-      z-index: 0;
-      animation: spin-ring 4s linear infinite;
-    }
-    @keyframes spin-ring {
-      to { transform: rotate(360deg); }
-    }
-    /* Outer glow */
-    .avatar-glow {
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(34,211,238,.35) 0%, transparent 70%);
-      z-index: 0;
-      animation: pulse-glow 3s ease-in-out infinite;
-    }
-    @keyframes pulse-glow {
-      0%,100% { opacity: .6; transform: scale(1); }
-      50%      { opacity: 1;  transform: scale(1.06); }
-    }
-    /* White gap between ring and photo */
-    .avatar-inner {
-      position: relative;
-      z-index: 1;
-      width: 164px;
-      height: 164px;
-      border-radius: 50%;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,.5);
-    }
-    .avatar {
-      width: 152px;
-      height: 152px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      box-shadow: 0 4px 20px rgba(0,0,0,.4);
-    }
-    /* Placeholder shown when no real photo */
-    .avatar-placeholder {
-      width: 152px;
-      height: 152px;
-      border-radius: 50%;
-      background: var(--bg2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      color: var(--cyan);
-    }
+    /* AVATAR */
+    .avatar-wrap { position: relative; display: inline-block; margin-bottom: 2rem; }
+    .avatar-ring { position: absolute; inset: -5px; border-radius: 50%; background: conic-gradient(var(--cyan),var(--emerald),#818cf8,var(--cyan)); z-index: 0; animation: spin-ring 4s linear infinite; }
+    @keyframes spin-ring { to { transform: rotate(360deg); } }
+    .avatar-glow { position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle,rgba(34,211,238,.35) 0%,transparent 70%); z-index: 0; animation: pulse-glow 3s ease-in-out infinite; }
+    @keyframes pulse-glow { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.06)} }
+    .avatar-inner { position: relative; z-index: 1; width: 164px; height: 164px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0,0,0,.5); }
+    .avatar { width: 152px; height: 152px; border-radius: 50%; object-fit: cover; object-position: center top; display: block; box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+    .avatar-placeholder { width: 152px; height: 152px; border-radius: 50%; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: var(--cyan); }
 
     .hero-badge { display: inline-flex; align-items: center; gap: .45rem; background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.3); border-radius: 999px; padding: .3rem .85rem; font-size: .78rem; font-weight: 600; color: var(--cyan); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 1.25rem; }
-    .hero-badge::before { content: '&#9679;'; font-size: .5rem; animation: blink 1.6s infinite; }
+    .hero-badge::before { content: '●'; font-size: .5rem; animation: blink 1.6s infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
     h1.hero-name { font-size: clamp(2.2rem,6vw,4.5rem); font-weight: 900; letter-spacing: -2px; line-height: 1.05; background: linear-gradient(135deg,#f1f5f9 30%,var(--cyan) 70%,var(--emerald) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: .6rem; }
     .hero-headline { font-size: clamp(.95rem,2.2vw,1.2rem); color: var(--cyan); font-weight: 600; margin-bottom: 1rem; }
@@ -132,21 +63,21 @@
     .chev { animation: bounce 1.5s infinite; }
     @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
 
-    /* ── Metrics ── */
+    /* METRICS */
     #metrics { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem 0; }
     .metrics-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: center; }
     .metric { display: flex; flex-direction: column; align-items: center; gap: .2rem; min-width: 155px; text-align: center; }
     .metric-value { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 900; line-height: 1; background: linear-gradient(90deg,var(--cyan),var(--emerald)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .metric-label { font-size: .8rem; color: var(--muted); font-weight: 500; max-width: 155px; }
     .m-div { width: 1px; height: 48px; background: var(--border); }
-    @media(max-width:600px) { .m-div { display: none; } }
+    @media(max-width:600px){.m-div{display:none}}
 
-    /* ── Section headers ── */
+    /* SECTIONS */
     .section-label { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan); margin-bottom: .6rem; }
     .section-title { font-size: clamp(1.7rem,4vw,2.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: .75rem; }
     .section-desc { color: var(--muted); max-width: 580px; margin-bottom: 3rem; }
 
-    /* ── Project cards ── */
+    /* PROJECTS */
     #projects { padding: 6rem 0; }
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.5rem; }
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; transition: transform .25s,border-color .25s,box-shadow .25s; position: relative; overflow: hidden; }
@@ -159,8 +90,23 @@
     .card p { color: var(--muted); font-size: .9rem; line-height: 1.65; }
     .card-badge { display: inline-flex; align-items: center; gap: .35rem; margin-top: 1.1rem; background: rgba(52,211,153,.1); border: 1px solid rgba(52,211,153,.3); border-radius: 999px; padding: .25rem .75rem; font-size: .75rem; font-weight: 700; color: var(--emerald); }
 
-    /* ── Stack ── */
-    #stack { padding: 6rem 0; background: var(--bg3); }
+    /* EXPERIENCE */
+    #experience { padding: 6rem 0; background: var(--bg3); }
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; max-width: 780px; }
+    .tl-item { display: flex; gap: 1.5rem; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .tl-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; margin-top: 5px; box-shadow: 0 0 10px var(--cyan); }
+    .tl-line { width: 2px; flex: 1; background: var(--border); margin-top: 4px; }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-content { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.6rem; flex: 1; transition: border-color .2s; }
+    .tl-content:hover { border-color: var(--cyan-dim); }
+    .tl-role { font-size: 1rem; font-weight: 700; }
+    .tl-company { color: var(--cyan); font-size: .88rem; font-weight: 600; margin-bottom: .2rem; }
+    .tl-period { color: var(--muted); font-size: .78rem; margin-bottom: .65rem; }
+    .tl-desc { color: var(--muted); font-size: .88rem; line-height: 1.65; }
+
+    /* STACK */
+    #stack { padding: 6rem 0; }
     .stack-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.5rem; }
     .stack-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
     .stack-card h4 { font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; }
@@ -168,8 +114,8 @@
     .pill { background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 999px; padding: .3rem .85rem; font-size: .82rem; font-weight: 500; color: var(--text); transition: border-color .2s,color .2s; cursor: default; }
     .pill:hover { border-color: var(--cyan); color: var(--cyan); }
 
-    /* ── Certs ── */
-    #certs { padding: 6rem 0; }
+    /* CERTS */
+    #certs { padding: 6rem 0; background: var(--bg3); }
     .cert-list { display: flex; flex-direction: column; gap: 1rem; }
     .cert-item { display: flex; align-items: center; gap: 1.25rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; transition: border-color .2s,transform .2s; }
     .cert-item:hover { border-color: var(--cyan-dim); transform: translateX(4px); }
@@ -177,7 +123,7 @@
     .cert-name { font-weight: 700; font-size: .95rem; }
     .cert-issuer { color: var(--muted); font-size: .82rem; }
 
-    /* ── Footer ── */
+    /* FOOTER */
     footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; text-align: center; }
     .footer-name { font-size: 1.5rem; font-weight: 900; letter-spacing: -.5px; background: linear-gradient(90deg,var(--cyan),var(--emerald)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: .35rem; }
     .footer-loc { color: var(--muted); font-size: .85rem; margin-bottom: 1.5rem; }
@@ -185,206 +131,367 @@
     .social-btn { display: inline-flex; align-items: center; gap: .45rem; background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 999px; padding: .45rem 1.1rem; font-size: .85rem; font-weight: 600; color: var(--text); transition: border-color .2s,color .2s,background .2s; }
     .social-btn:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(34,211,238,.07); text-decoration: none; }
     .footer-copy { color: var(--muted); font-size: .78rem; }
-
-    /* ── Animations ── */
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease,transform .6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">HQN.</div>
-    <button class="nav-toggle" onclick="document.getElementById('nl').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="nl">
-      <li><a href="#hero"     onclick="document.getElementById('nl').classList.remove('open')">Home</a></li>
-      <li><a href="#projects" onclick="document.getElementById('nl').classList.remove('open')">Projects</a></li>
-      <li><a href="#stack"    onclick="document.getElementById('nl').classList.remove('open')">Stack</a></li>
-      <li><a href="#certs"    onclick="document.getElementById('nl').classList.remove('open')">Certifications</a></li>
-      <li><a href="mailto:herlytaqn@gmail.com" onclick="document.getElementById('nl').classList.remove('open')">Contact</a></li>
-    </ul>
-  </nav>
+<script>
+/* =====================================================================
+   ██████╗  █████╗ ████████╗ █████╗     ██╗███████╗██╗
+   ██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗    ██║██╔════╝██║
+   ██║  ██║███████║   ██║   ███████║    ██║███████╗██║
+   ██║  ██║██╔══██║   ██║   ██╔══██║    ██║╚════██║██║
+   ██████╔╝██║  ██║   ██║   ██║  ██║    ██║███████║██║
+   ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝    ╚═╝╚══════╝╚═╝
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="grid-bg"></div>
-    <div class="container" style="position:relative;z-index:1">
+   ✏️  EDIT BAGIAN INI SAJA — sisanya otomatis!
+   ✏️  Ganti teks di dalam tanda kutip "..."
+   ✏️  Untuk tambah item: salin satu blok { }, tambah koma
+   ===================================================================== */
 
-      <!-- ════════════════════════════════════════════
-           PROFILE PICTURE — HOW TO ADD YOURS:
-           1. Save your photo as "photo.jpg" (or .png)
-           2. Put it in the same folder as this file
-           3. Change the src below to: src="photo.jpg"
-           4. Delete the avatar-placeholder div below
-           ════════════════════════════════════════════ -->
+const DATA = {
 
-      <div class="avatar-wrap">
-        <div class="avatar-glow"></div>
-        <div class="avatar-ring"></div>
-        <div class="avatar-inner">
-          <img class="avatar" src="photo.jpg" alt="Herlyta Qotrun Nada" />
-        </div>
-      </div>
+  /* ──────────────────────────────────────────────
+     👤 PROFIL UTAMA
+  ────────────────────────────────────────────── */
+  name:       "Herlyta Qotrun Nada",
+  photo:      "photo.jpg",          // nama file foto (taruh di folder yang sama)
+  badge:      "Available for Opportunities",
+  headline:   "Technology Enthusiast · Bridging Web Engineering, Data Analytics & Digital Innovation",
+  subheadline: "Informatics graduate (GPA 3.81/4.00) passionate about building reliable digital systems, leveraging data-driven insights, and optimizing modern workflows.",
+  location:   "Cirebon, Indonesia",
+  year:       "2026",
 
-      <div class="hero-badge">Available for Opportunities</div>
-      <h1 class="hero-name">Herlyta Qotrun Nada</h1>
-      <p class="hero-headline">Technology Enthusiast &bull; Bridging Web Engineering, Data Analytics &amp; Digital Innovation</p>
-      <p class="hero-sub">Informatics graduate (GPA&nbsp;3.81/4.00) passionate about building reliable digital systems, leveraging data-driven insights, and optimizing modern workflows.</p>
-      <div class="hero-ctas">
-        <a href="https://wa.me/6282316705970" class="btn btn-primary" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Get in Touch
-        </a>
-        <a href="mailto:herlytaqn@gmail.com" class="btn btn-outline">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email Me
-        </a>
+  /* ──────────────────────────────────────────────
+     📞 KONTAK
+  ────────────────────────────────────────────── */
+  contact: {
+    whatsapp:  "6282316705970",           // nomor WA dengan kode negara, tanpa +
+    email:     "herlytaqn@gmail.com",
+    linkedin:  "herlytaqotrun",           // username LinkedIn saja
+  },
+
+  /* ──────────────────────────────────────────────
+     📊 ANGKA-ANGKA PENCAPAIAN (Metrics Bar)
+     target = angka tujuan animasi
+     decimal = berapa angka desimal (0 = bulat)
+     suffix  = teks di belakang angka
+     label   = keterangan di bawah angka
+  ────────────────────────────────────────────── */
+  metrics: [
+    { target: 99,  decimal: 0, suffix: "%",    label: "System Uptime & <1s API Response Time" },
+    { target: 500, decimal: 0, suffix: "+",    label: "Active Users in Digital LMS Ecosystems" },
+    { target: 381, decimal: 2, suffix: "",     label: "GPA — Valedictorian / Best Graduate" },
+    { target: 48,  decimal: 1, suffix: "/5.0", label: "LMS User Satisfaction Score" },
+  ],
+
+  /* ──────────────────────────────────────────────
+     🏆 PROYEK & PENCAPAIAN
+     icon    = emoji ikon
+     tag     = kategori kecil di atas judul
+     title   = judul proyek
+     desc    = deskripsi (boleh pakai <strong>teks</strong> untuk tebal)
+     badge   = label hijau di bawah
+  ────────────────────────────────────────────── */
+  projects: [
+    {
+      icon:  "⚙️",
+      tag:   "Web Engineering",
+      title: "Full-Stack Web Application Development",
+      desc:  "Built modular fullstack web components with Laravel, React.js & RESTful API integration — achieving sub-second response times and 99% production uptime at <strong>Adiva Solution</strong>.",
+      badge: "✦ 99% Production Uptime",
+    },
+    {
+      icon:  "🏆",
+      tag:   "National Recognition",
+      title: "2nd Place — National Web Innovation",
+      desc:  "Earned <strong>2nd Place</strong> at the National Web Development Competition (I/O Festival UNTAR 2024), competing against top Indonesian university teams.",
+      badge: "✦ I/O Festival UNTAR 2024",
+    },
+    {
+      icon:  "📚",
+      tag:   "EdTech & LMS",
+      title: "Digital Learning Enablement at Scale",
+      desc:  "Scaled LMS platforms for <strong>500+ active users</strong> at PT. Revolusi Cita Edukasi, achieving a <strong>4.8/5.0 satisfaction score</strong> through UX refinement and automation.",
+      badge: "✦ 4.8/5.0 Satisfaction Score",
+    },
+    // Tambah proyek baru? Salin blok di atas dan paste di sini!
+  ],
+
+  /* ──────────────────────────────────────────────
+     💼 PENGALAMAN KERJA (Timeline)
+     role    = jabatan / posisi
+     company = nama perusahaan
+     period  = periode kerja, cth: "Jan 2024 – Jun 2025"
+     desc    = deskripsi pekerjaan
+  ────────────────────────────────────────────── */
+  experience: [
+    {
+      role:    "Web Developer",
+      company: "Adiva Solution",
+      period:  "2024 – 2025",
+      desc:    "Developed and maintained fullstack web applications using Laravel and React.js. Ensured 99% uptime and sub-second API response times for enterprise clients.",
+    },
+    {
+      role:    "LMS Administrator & Digital Learning Specialist",
+      company: "PT. Revolusi Cita Edukasi",
+      period:  "2023 – 2024",
+      desc:    "Managed and scaled LMS platforms serving 500+ active users. Achieved 4.8/5.0 satisfaction score through continuous UX improvement and workflow automation.",
+    },
+    // Tambah pengalaman baru? Salin blok di atas dan paste di sini!
+  ],
+
+  /* ──────────────────────────────────────────────
+     🛠️ TECH STACK
+     Tambah/hapus skill sesuai kemampuan kamu
+  ────────────────────────────────────────────── */
+  stack: [
+    { category: "Languages",          skills: ["Python", "SQL", "JavaScript", "PHP", "HTML & CSS"] },
+    { category: "Frameworks & APIs",  skills: ["React.js", "Laravel", "RESTful APIs", "Node.js"] },
+    { category: "Data & Analytics",   skills: ["Google Analytics", "Meta Insights", "Data Visualization", "MySQL"] },
+    { category: "Cloud & Platforms",  skills: ["Microsoft Azure", "LMS Admin", "Git & GitHub"] },
+  ],
+
+  /* ──────────────────────────────────────────────
+     🎓 SERTIFIKASI
+     icon   = emoji ikon
+     name   = nama sertifikasi
+     issuer = lembaga penerbit
+  ────────────────────────────────────────────── */
+  certifications: [
+    { icon: "☁️", name: "Microsoft Azure AI Fundamentals",  issuer: "Microsoft — AI-900" },
+    { icon: "📊", name: "Full Stack Data Analyst",           issuer: "RevoU — Comprehensive Data Analytics Program" },
+    { icon: "💻", name: "BNSP Web Development Competency",   issuer: "Badan Nasional Sertifikasi Profesi (BNSP), Indonesia" },
+    { icon: "🎓", name: "Valedictorian / Best Graduate",     issuer: "Informatics Engineering — GPA 3.81/4.00" },
+    // Tambah sertifikasi baru? Salin blok di atas dan paste di sini!
+  ],
+
+};
+/* =====================================================================
+   ⛔ BERHENTI DI SINI — jangan edit di bawah ini!
+   ===================================================================== */
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" id="nav-logo"></div>
+  <button class="nav-toggle" onclick="document.getElementById('nl').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nl">
+    <li><a href="#hero"       onclick="document.getElementById('nl').classList.remove('open')">Home</a></li>
+    <li><a href="#projects"   onclick="document.getElementById('nl').classList.remove('open')">Projects</a></li>
+    <li><a href="#experience" onclick="document.getElementById('nl').classList.remove('open')">Experience</a></li>
+    <li><a href="#stack"      onclick="document.getElementById('nl').classList.remove('open')">Stack</a></li>
+    <li><a href="#certs"      onclick="document.getElementById('nl').classList.remove('open')">Certifications</a></li>
+    <li><a id="nav-contact" href="#" onclick="document.getElementById('nl').classList.remove('open')">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="avatar-wrap">
+      <div class="avatar-glow"></div>
+      <div class="avatar-ring"></div>
+      <div class="avatar-inner">
+        <img class="avatar" id="avatar-img" src="" alt="" />
       </div>
     </div>
-    <div class="scroll-hint">
-      <span>SCROLL</span>
-      <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    <div class="hero-badge" id="hero-badge"></div>
+    <h1 class="hero-name" id="hero-name"></h1>
+    <p class="hero-headline" id="hero-headline"></p>
+    <p class="hero-sub" id="hero-sub"></p>
+    <div class="hero-ctas">
+      <a id="cta-wa" href="#" class="btn btn-primary" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Get in Touch
+      </a>
+      <a id="cta-email" href="#" class="btn btn-outline">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Me
+      </a>
     </div>
-  </section>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
 
-  <!-- METRICS -->
-  <section id="metrics">
-    <div class="container">
-      <div class="metrics-grid">
-        <div class="metric fade-up"><div class="metric-value" data-target="99" data-suffix="%">0</div><div class="metric-label">System Uptime &amp; &lt;1s API Response Time</div></div>
-        <div class="m-div"></div>
-        <div class="metric fade-up"><div class="metric-value" data-target="500" data-suffix="+">0</div><div class="metric-label">Active Users in Digital LMS Ecosystems</div></div>
-        <div class="m-div"></div>
-        <div class="metric fade-up"><div class="metric-value" data-target="381" data-decimal="2">0</div><div class="metric-label">GPA &mdash; Valedictorian / Best Graduate</div></div>
-        <div class="m-div"></div>
-        <div class="metric fade-up"><div class="metric-value" data-target="48" data-decimal="1" data-suffix="/5.0">0</div><div class="metric-label">LMS User Satisfaction Score</div></div>
-      </div>
+<!-- METRICS -->
+<section id="metrics">
+  <div class="container">
+    <div class="metrics-grid" id="metrics-grid"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <span class="section-label fade-up">Featured Work</span>
+    <h2 class="section-title fade-up">Projects & Achievements</h2>
+    <p class="section-desc fade-up">Real-world impact through engineering, innovation, and digital education.</p>
+    <div class="cards-grid" id="cards-grid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label fade-up">Work History</span>
+    <h2 class="section-title fade-up">Experience</h2>
+    <p class="section-desc fade-up">Professional roles that shaped my engineering and digital skills.</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="container">
+    <span class="section-label fade-up">Skills & Tools</span>
+    <h2 class="section-title fade-up">Tech Stack</h2>
+    <p class="section-desc fade-up">A versatile toolkit spanning frontend, backend, data analytics, and cloud platforms.</p>
+    <div class="stack-grid" id="stack-grid"></div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="container">
+    <span class="section-label fade-up">Credentials</span>
+    <h2 class="section-title fade-up">Certifications</h2>
+    <p class="section-desc fade-up">Verified credentials validating my expertise across cloud, data, and web development.</p>
+    <div class="cert-list" id="cert-list"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-name" id="footer-name"></div>
+    <div class="footer-loc" id="footer-loc"></div>
+    <div class="social-row" id="social-row"></div>
+    <div class="footer-copy" id="footer-copy"></div>
+  </div>
+</footer>
+
+<script>
+/* ── RENDER ENGINE (jangan diubah) ─────────────────────── */
+const $ = id => document.getElementById(id);
+
+// Initials for nav logo
+const initials = DATA.name.split(' ').map(w=>w[0]).join('').slice(0,3).toUpperCase();
+$('nav-logo').textContent = initials + '.';
+document.title = DATA.name + ' — Portfolio';
+
+// Hero
+$('avatar-img').src = DATA.photo;
+$('avatar-img').alt = DATA.name;
+$('hero-badge').textContent = DATA.badge;
+$('hero-name').textContent = DATA.name;
+$('hero-headline').textContent = DATA.headline;
+$('hero-sub').textContent = DATA.subheadline;
+$('cta-wa').href = 'https://wa.me/' + DATA.contact.whatsapp;
+$('cta-email').href = 'mailto:' + DATA.contact.email;
+$('nav-contact').href = 'mailto:' + DATA.contact.email;
+
+// Metrics
+$('metrics-grid').innerHTML = DATA.metrics.map((m,i) =>
+  (i > 0 ? '<div class="m-div"></div>' : '') +
+  `<div class="metric fade-up">
+    <div class="metric-value" data-target="${m.target}" ${m.decimal?'data-decimal="'+m.decimal+'"':''} ${m.suffix?'data-suffix="'+m.suffix+'"':''}>0</div>
+    <div class="metric-label">${m.label}</div>
+  </div>`
+).join('');
+
+// Projects
+$('cards-grid').innerHTML = DATA.projects.map(p =>
+  `<div class="card fade-up">
+    <div class="card-icon">${p.icon}</div>
+    <span class="card-tag">${p.tag}</span>
+    <h3>${p.title}</h3>
+    <p>${p.desc}</p>
+    <span class="card-badge">${p.badge}</span>
+  </div>`
+).join('');
+
+// Experience
+$('timeline').innerHTML = DATA.experience.map(e =>
+  `<div class="tl-item fade-up">
+    <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-content">
+      <div class="tl-role">${e.role}</div>
+      <div class="tl-company">${e.company}</div>
+      <div class="tl-period">📅 ${e.period}</div>
+      <div class="tl-desc">${e.desc}</div>
     </div>
-  </section>
+  </div>`
+).join('');
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <span class="section-label fade-up">Featured Work</span>
-      <h2 class="section-title fade-up">Projects &amp; Achievements</h2>
-      <p class="section-desc fade-up">Real-world impact through engineering, innovation, and digital education.</p>
-      <div class="cards-grid">
-        <div class="card fade-up">
-          <div class="card-icon">&#9881;</div>
-          <span class="card-tag">Web Engineering</span>
-          <h3>Full-Stack Web Application Development</h3>
-          <p>Built modular fullstack web components with Laravel, React.js &amp; RESTful API integration achieving sub-second response times and 99% production uptime at <strong>Adiva Solution</strong>.</p>
-          <span class="card-badge">&#10022; 99% Production Uptime</span>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon">&#127942;</div>
-          <span class="card-tag">National Recognition</span>
-          <h3>2nd Place &mdash; National Web Innovation</h3>
-          <p>Earned <strong>2nd Place</strong> at the National Web Development Competition (I/O Festival UNTAR 2024), competing against top Indonesian university teams.</p>
-          <span class="card-badge">&#10022; I/O Festival UNTAR 2024</span>
-        </div>
-        <div class="card fade-up">
-          <div class="card-icon">&#128218;</div>
-          <span class="card-tag">EdTech &amp; LMS</span>
-          <h3>Digital Learning Enablement at Scale</h3>
-          <p>Scaled LMS platforms for <strong>500+ active users</strong> at PT. Revolusi Cita Edukasi, achieving a <strong>4.8/5.0 satisfaction score</strong> through UX refinement and workflow automation.</p>
-          <span class="card-badge">&#10022; 4.8/5.0 Satisfaction Score</span>
-        </div>
-      </div>
-    </div>
-  </section>
+// Stack
+$('stack-grid').innerHTML = DATA.stack.map(s =>
+  `<div class="stack-card fade-up">
+    <h4>${s.category}</h4>
+    <div class="pill-group">${s.skills.map(sk=>`<span class="pill">${sk}</span>`).join('')}</div>
+  </div>`
+).join('');
 
-  <!-- STACK -->
-  <section id="stack">
-    <div class="container">
-      <span class="section-label fade-up">Skills &amp; Tools</span>
-      <h2 class="section-title fade-up">Tech Stack</h2>
-      <p class="section-desc fade-up">A versatile toolkit spanning frontend, backend, data analytics, and cloud platforms.</p>
-      <div class="stack-grid">
-        <div class="stack-card fade-up"><h4>Languages</h4><div class="pill-group"><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">JavaScript</span><span class="pill">PHP</span><span class="pill">HTML &amp; CSS</span></div></div>
-        <div class="stack-card fade-up"><h4>Frameworks &amp; APIs</h4><div class="pill-group"><span class="pill">React.js</span><span class="pill">Laravel</span><span class="pill">RESTful APIs</span><span class="pill">Node.js</span></div></div>
-        <div class="stack-card fade-up"><h4>Data &amp; Analytics</h4><div class="pill-group"><span class="pill">Google Analytics</span><span class="pill">Meta Insights</span><span class="pill">Data Visualization</span><span class="pill">MySQL</span></div></div>
-        <div class="stack-card fade-up"><h4>Cloud &amp; Platforms</h4><div class="pill-group"><span class="pill">Microsoft Azure</span><span class="pill">LMS Admin</span><span class="pill">Git &amp; GitHub</span></div></div>
-      </div>
-    </div>
-  </section>
+// Certifications
+$('cert-list').innerHTML = DATA.certifications.map(c =>
+  `<div class="cert-item fade-up">
+    <div class="cert-icon">${c.icon}</div>
+    <div><div class="cert-name">${c.name}</div><div class="cert-issuer">${c.issuer}</div></div>
+  </div>`
+).join('');
 
-  <!-- CERTS -->
-  <section id="certs">
-    <div class="container">
-      <span class="section-label fade-up">Credentials</span>
-      <h2 class="section-title fade-up">Certifications</h2>
-      <p class="section-desc fade-up">Verified credentials validating my expertise across cloud, data, and web development.</p>
-      <div class="cert-list">
-        <div class="cert-item fade-up"><div class="cert-icon">&#9729;</div><div><div class="cert-name">Microsoft Azure AI Fundamentals</div><div class="cert-issuer">Microsoft &mdash; AI-900</div></div></div>
-        <div class="cert-item fade-up"><div class="cert-icon">&#128202;</div><div><div class="cert-name">Full Stack Data Analyst</div><div class="cert-issuer">RevoU &mdash; Comprehensive Data Analytics Program</div></div></div>
-        <div class="cert-item fade-up"><div class="cert-icon">&#128187;</div><div><div class="cert-name">BNSP Web Development Competency</div><div class="cert-issuer">Badan Nasional Sertifikasi Profesi (BNSP), Indonesia</div></div></div>
-        <div class="cert-item fade-up"><div class="cert-icon">&#127891;</div><div><div class="cert-name">Valedictorian / Best Graduate</div><div class="cert-issuer">Informatics Engineering &mdash; GPA 3.81/4.00</div></div></div>
-      </div>
-    </div>
-  </section>
+// Footer
+$('footer-name').textContent = DATA.name;
+$('footer-loc').innerHTML = '📍 ' + DATA.location;
+$('social-row').innerHTML = `
+  <a href="https://linkedin.com/in/${DATA.contact.linkedin}" target="_blank" rel="noopener" class="social-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://wa.me/${DATA.contact.whatsapp}" target="_blank" rel="noopener" class="social-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    WhatsApp
+  </a>
+  <a href="mailto:${DATA.contact.email}" class="social-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+    Email
+  </a>`;
+$('footer-copy').innerHTML = '&copy; ' + DATA.year + ' ' + DATA.name + ' &mdash; Crafted with &hearts; in ' + DATA.location;
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-name">Herlyta Qotrun Nada</div>
-      <div class="footer-loc">&#128205; Cirebon, Indonesia</div>
-      <div class="social-row">
-        <a href="https://linkedin.com/in/herlytaqotrun" target="_blank" rel="noopener" class="social-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://wa.me/6282316705970" target="_blank" rel="noopener" class="social-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          WhatsApp
-        </a>
-        <a href="mailto:herlytaqn@gmail.com" class="social-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
-        </a>
-      </div>
-      <div class="footer-copy">&copy; 2026 Herlyta Qotrun Nada &mdash; Crafted with &hearts; in Cirebon, Indonesia.</div>
-    </div>
-  </footer>
+// Animations
+const io = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); }
+}), {threshold:.12});
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-  <script>
-    // Fade-up on scroll
-    const io = new IntersectionObserver(e => e.forEach(x => {
-      if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); }
-    }), {threshold:.15});
-    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target,10), dec = parseInt(el.dataset.decimal||'0',10), suf = el.dataset.suffix||'';
+  const dur = 1500, start = performance.now();
+  (function step(now){
+    const p = Math.min((now-start)/dur,1), ease = 1-Math.pow(1-p,3), raw = target*ease;
+    el.textContent = (dec>0?(raw/Math.pow(10,dec)).toFixed(dec):Math.round(raw))+suf;
+    if(p<1) requestAnimationFrame(step);
+  })(start);
+}
+const cio = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ animateCounter(x.target); cio.unobserve(x.target); }
+}), {threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el => cio.observe(el));
 
-    // Animated counters
-    function animateCounter(el) {
-      const target = parseInt(el.dataset.target, 10);
-      const dec = parseInt(el.dataset.decimal || '0', 10);
-      const suf = el.dataset.suffix || '';
-      const dur = 1500, start = performance.now();
-      (function step(now) {
-        const p = Math.min((now - start) / dur, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
-        const raw = target * ease;
-        el.textContent = (dec > 0 ? (raw / Math.pow(10, dec)).toFixed(dec) : Math.round(raw)) + suf;
-        if (p < 1) requestAnimationFrame(step);
-      })(start);
-    }
-    const cio = new IntersectionObserver(e => e.forEach(x => {
-      if(x.isIntersecting){ animateCounter(x.target); cio.unobserve(x.target); }
-    }), {threshold:.5});
-    document.querySelectorAll('[data-target]').forEach(el => cio.observe(el));
-
-    // Active nav link
-    const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let cur = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
-      links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--cyan)' : ''; });
-    }, {passive: true});
-  </script>
+const secs = document.querySelectorAll('section[id]');
+const lnks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur=''; secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-90) cur=s.id; });
+  lnks.forEach(a=>{ a.style.color = a.getAttribute('href')==='#'+cur?'var(--cyan)':''; });
+},{passive:true});
+</script>
 </body>
 </html>
-
