@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -122,6 +122,32 @@
     .cert-icon { width: 42px; height: 42px; flex-shrink: 0; border-radius: 8px; background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.25); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
     .cert-name { font-weight: 700; font-size: .95rem; }
     .cert-issuer { color: var(--muted); font-size: .82rem; }
+
+    /* SHOWCASE */
+    #showcase { padding: 6rem 0; }
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 1.5rem; }
+    .sc-img-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform .25s,border-color .25s,box-shadow .25s; }
+    .sc-img-card:hover { transform: translateY(-5px); border-color: var(--cyan-dim); box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+    .sc-img-thumb { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .sc-img-placeholder { width: 100%; height: 190px; background: var(--bg2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; color: var(--muted); font-size: .85rem; border-bottom: 1px solid var(--border); }
+    .sc-img-placeholder .pl-icon { font-size: 2.5rem; }
+    .sc-img-body { padding: 1.1rem 1.3rem 1.3rem; }
+    .sc-type { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); margin-bottom: .35rem; }
+    .sc-title { font-size: .98rem; font-weight: 700; margin-bottom: .3rem; }
+    .sc-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+    .sc-repo-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: .75rem; transition: transform .25s,border-color .25s,box-shadow .25s; text-decoration: none !important; color: inherit; }
+    .sc-repo-card:hover { transform: translateY(-5px); border-color: var(--cyan-dim); box-shadow: 0 12px 40px rgba(0,0,0,.45); text-decoration: none; }
+    .sc-repo-top { display: flex; align-items: center; gap: .65rem; }
+    .sc-repo-name { font-size: 1rem; font-weight: 700; color: var(--cyan); }
+    .sc-repo-desc { font-size: .85rem; color: var(--muted); line-height: 1.55; flex: 1; }
+    .sc-repo-meta { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .sc-repo-tag { background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.25); border-radius: 999px; padding: .2rem .65rem; font-size: .72rem; font-weight: 600; color: var(--cyan); }
+    .sc-repo-arrow { font-size: .8rem; font-weight: 600; color: var(--emerald); }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,.92); align-items: center; justify-content: center; padding: 1.5rem; flex-direction: column; gap: 1rem; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 10px; box-shadow: 0 0 60px rgba(0,0,0,.8); }
+    .lb-close { position: absolute; top: 1.25rem; right: 1.5rem; font-size: 2.2rem; color: var(--text); cursor: pointer; background: none; border: none; line-height: 1; }
+    .lb-caption { color: var(--muted); font-size: .85rem; text-align: center; }
 
     /* FOOTER */
     footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; text-align: center; }
@@ -268,6 +294,53 @@ const DATA = {
     // Tambah sertifikasi baru? Salin blok di atas dan paste di sini!
   ],
 
+  /* ──────────────────────────────────────────────
+     🖼️ SHOWCASE — Hasil Nyata Kamu!
+     Ada 2 tipe:
+
+     TIPE 1 — Foto / Screenshot:
+     {
+       type:  "photo",
+       label: "Kategori",       ← misal: "Kegiatan" / "Screenshot App"
+       title: "Judul",
+       desc:  "Keterangan",
+       image: "nama-file.jpg",  ← taruh foto di folder portfolio
+     }
+
+     TIPE 2 — Project GitHub:
+     {
+       type:  "github",
+       title: "Nama Project",
+       desc:  "Deskripsi project",
+       link:  "https://github.com/username/repo",
+       tags:  ["Laravel", "React"],
+     }
+  ────────────────────────────────────────────── */
+  showcase: [
+    {
+      type:  "photo",
+      label: "Kegiatan",
+      title: "I/O Festival UNTAR 2024 — 2nd Place",
+      desc:  "Momen menerima penghargaan 2nd Place National Web Development Competition.",
+      image: "",   // ← ganti dengan nama file foto kamu, misal: "lomba.jpg"
+    },
+    {
+      type:  "photo",
+      label: "Screenshot App",
+      title: "Web App — Adiva Solution",
+      desc:  "Tampilan web application fullstack yang dibangun dengan Laravel & React.js.",
+      image: "",   // ← ganti dengan nama file screenshot kamu, misal: "app.jpg"
+    },
+    {
+      type:  "github",
+      title: "Portfolio Website",
+      desc:  "Personal portfolio website built with pure HTML, CSS & JavaScript. Clean dark mode design.",
+      link:  "https://github.com/herlytaqotrun/portfolio",
+      tags:  ["HTML", "CSS", "JavaScript"],
+    },
+    // Tambah item baru? Salin salah satu blok di atas dan paste di sini!
+  ],
+
 };
 /* =====================================================================
    ⛔ BERHENTI DI SINI — jangan edit di bawah ini!
@@ -368,6 +441,22 @@ const DATA = {
     <div class="cert-list" id="cert-list"></div>
   </div>
 </section>
+<!-- SHOWCASE -->
+<section id="showcase">
+  <div class="container">
+    <span class="section-label fade-up">Hasil Nyata</span>
+    <h2 class="section-title fade-up">Showcase</h2>
+    <p class="section-desc fade-up">Foto kegiatan, screenshot project, dan repository GitHub — bukti nyata karya saya.</p>
+    <div class="showcase-grid" id="showcase-grid"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
+  <img id="lb-img" src="" alt="" />
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -447,6 +536,49 @@ $('cert-list').innerHTML = DATA.certifications.map(c =>
     <div><div class="cert-name">${c.name}</div><div class="cert-issuer">${c.issuer}</div></div>
   </div>`
 ).join('');
+
+// Showcase
+$('showcase-grid').innerHTML = DATA.showcase.map(s => {
+  if (s.type === 'github') {
+    return `<a class="sc-repo-card fade-up" href="${s.link}" target="_blank" rel="noopener">
+      <div class="sc-repo-top">
+        <span style="font-size:1.4rem">💻</span>
+        <div>
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">GitHub Repository</div>
+          <div class="sc-repo-name">${s.title}</div>
+        </div>
+      </div>
+      <div class="sc-repo-desc">${s.desc}</div>
+      <div class="sc-repo-meta">${s.tags.map(t=>`<span class="sc-repo-tag">${t}</span>`).join('')}</div>
+      <div class="sc-repo-arrow">→ Lihat di GitHub</div>
+    </a>`;
+  }
+  const hasImg = s.image && s.image.trim() !== '';
+  const imgEl  = hasImg
+    ? `<img class="sc-img-thumb" src="${s.image}" alt="${s.title}" onclick="openLightbox('${s.image}','${s.title}')" />`
+    : `<div class="sc-img-placeholder"><span class="pl-icon">🖼️</span><span>Foto belum ditambahkan</span></div>`;
+  return `<div class="sc-img-card fade-up">
+    ${imgEl}
+    <div class="sc-img-body">
+      <div class="sc-type">${s.label}</div>
+      <div class="sc-title">${s.title}</div>
+      <div class="sc-desc">${s.desc}</div>
+    </div>
+  </div>`;
+}).join('');
+
+// Lightbox
+function openLightbox(src, caption) {
+  $('lb-img').src = src;
+  $('lb-caption').textContent = caption;
+  $('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  $('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
 
 // Footer
 $('footer-name').textContent = DATA.name;
