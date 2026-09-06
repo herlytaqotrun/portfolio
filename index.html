@@ -266,106 +266,133 @@ const DATA = {
 
   /* ──────────────────────────────────────────────
      🏆 PROYEK & PENCAPAIAN
-     icon    = emoji ikon
-     tag     = kategori kecil di atas judul
-     title   = judul proyek
-     desc    = deskripsi (boleh pakai <strong>teks</strong> untuk tebal)
-     badge   = label hijau di bawah
   ────────────────────────────────────────────── */
   projects: [
     {
       icon:  "⚙️",
       tag:   "Web Engineering",
-      title: "Full-Stack Web Application Development",
-      desc:  "Built modular fullstack web components with Laravel, React.js & RESTful API integration — achieving sub-second response times and 99% production uptime at <strong>Adiva Solution</strong>.",
+      title: "Full-Stack Web Application — Adiva Solution",
+      desc:  "Built 3+ core web modules with <strong>Laravel & React.js</strong>, stabilized system to production. RESTful API integration achieving <strong>sub-second response time & 99% uptime</strong>.",
       badge: "✦ 99% Production Uptime",
     },
     {
       icon:  "🏆",
-      tag:   "National Recognition",
-      title: "2nd Place — National Web Innovation",
-      desc:  "Earned <strong>2nd Place</strong> at the National Web Development Competition (I/O Festival UNTAR 2024), competing against top Indonesian university teams.",
+      tag:   "National Competition",
+      title: "2nd Place — National Web Development",
+      desc:  "Earned <strong>2nd Place</strong> at the National Web Development Competition, <strong>I/O Festival Tingkat Nasional — ITS Universitas Tarumanagara (2024)</strong>, competing against top teams.",
       badge: "✦ I/O Festival UNTAR 2024",
     },
     {
       icon:  "📚",
       tag:   "EdTech & LMS",
-      title: "Digital Learning Enablement at Scale",
-      desc:  "Scaled LMS platforms for <strong>500+ active users</strong> at PT. Revolusi Cita Edukasi, achieving a <strong>4.8/5.0 satisfaction score</strong> through UX refinement and automation.",
+      title: "Learning Enablement at Scale",
+      desc:  "Developed 5+ training programs at <strong>PT. Revolusi Cita Edukasi</strong> serving <strong>500+ active learners</strong>. Achieved <strong>4.8/5.0 satisfaction score</strong> through content & UX optimization.",
       badge: "✦ 4.8/5.0 Satisfaction Score",
     },
-    // Tambah proyek baru? Salin blok di atas dan paste di sini!
+    {
+      icon:  "🎓",
+      tag:   "Academic Achievement",
+      title: "Wisudawan Terbaik — Valedictorian",
+      desc:  "Graduated as <strong>Best Graduate (Valedictorian)</strong> from STMIK IMM Cirebon with <strong>GPA 3.81/4.00</strong> in D3 Manajemen Informatika, class of 2025.",
+      badge: "✦ GPA 3.81 / 4.00",
+    },
+    {
+      icon:  "✍️",
+      tag:   "Competition",
+      title: "3rd Place — Karya Ilmiah Artikel Populer",
+      desc:  "Awarded <strong>3rd Place</strong> at the Karya Ilmiah Artikel Populer competition by <strong>Bannas Indonesia (2024)</strong>.",
+      badge: "✦ Bannas Indonesia 2024",
+    },
+    {
+      icon:  "🎤",
+      tag:   "Competition",
+      title: "3rd Place — Debate Competition KOMBAT",
+      desc:  "Earned <strong>3rd Place</strong> at the regional debate competition <strong>KOMBAT</strong> organized by BEM Universitas Gunung Jati (2023).",
+      badge: "✦ Regional Level 2023",
+    },
   ],
 
   /* ──────────────────────────────────────────────
-     💼 PENGALAMAN KERJA (Timeline)
+     💼 PENGALAMAN KERJA & ORGANISASI (Timeline)
      role    = jabatan / posisi
-     company = nama perusahaan
-     period  = periode kerja, cth: "Jan 2024 – Jun 2025"
-     desc    = deskripsi pekerjaan
+     company = nama perusahaan / organisasi
+     period  = periode
+     desc    = deskripsi
+     type    = "work" atau "org" (opsional, untuk visual berbeda)
   ────────────────────────────────────────────── */
   experience: [
     {
-      role:    "Web Developer",
-      company: "Adiva Solution",
-      period:  "2024 – 2025",
-      desc:    "Developed and maintained fullstack web applications using Laravel and React.js. Ensured 99% uptime and sub-second API response times for enterprise clients.",
+      role:    "Learning Enablement Executive",
+      company: "PT. Revolusi Cita Edukasi — Jakarta",
+      period:  "Nov 2021 – Mei 2026",
+      desc:    "Developed 5+ training programs for 500+ active learners. Improved LMS satisfaction scores to 80% through evaluation-based content refinement. Analyzed program effectiveness using data & user feedback, achieving 4.8/5.0 satisfaction.",
     },
     {
-      role:    "LMS Administrator & Digital Learning Specialist",
-      company: "PT. Revolusi Cita Edukasi",
-      period:  "2023 – 2024",
-      desc:    "Managed and scaled LMS platforms serving 500+ active users. Achieved 4.8/5.0 satisfaction score through continuous UX improvement and workflow automation.",
+      role:    "Creative Media (Freelance)",
+      company: "Freelance — Sidoarjo",
+      period:  "Okt 2024 – Sep 2025",
+      desc:    "Handled creative projects for 10+ clients (graphic, video, social media) with 95% client satisfaction. Managed content calendars and team workflows producing 50+ media assets/month. Leveraged social media analytics to redesign paid campaign strategies.",
     },
-    // Tambah pengalaman baru? Salin blok di atas dan paste di sini!
+    {
+      role:    "Magang Fullstack Developer",
+      company: "Adiva Solution — Cirebon",
+      period:  "Jul 2023 – Agt 2023",
+      desc:    "Built 3+ core web application modules (Laravel & React.js) and stabilized the system to production. Integrated RESTful APIs and optimized database queries to achieve sub-1s response time. Maintained 99% system uptime through regular testing and debugging.",
+    },
+    {
+      role:    "Content Specialist",
+      company: "Kantor Desa — Jakarta",
+      period:  "Feb 2020 – Agt 2022",
+      desc:    "Produced and edited video content for YouTube growing to 10,000+ views/month. Managed web article publishing & SEO optimization reaching 5,000+ active readers/month. Developed multi-platform content distribution strategies across web & YouTube.",
+    },
+    {
+      role:    "Koordinator Kominfo",
+      company: "HPNK Kabupaten Cirebon (Organisasi)",
+      period:  "Sep 2023 – Sep 2025",
+      desc:    "Managed member database for HPNK Kabupaten Cirebon with 50% accuracy improvement. Coordinated & updated website content and organizational media, increasing engagement by 40%.",
+    },
+    {
+      role:    "Koordinator UKM dan HIMA",
+      company: "UKM STMIK UMK Cirebon (Organisasi)",
+      period:  "Apr 2024 – Feb 2025",
+      desc:    "Coordinated 10+ UKMs and HIMAs, facilitating 5+ cross-organizational collaboration programs. Facilitated 4+ forum events to support student integration and academic development.",
+    },
+    {
+      role:    "Sekretaris",
+      company: "BEM STMIK UMK Cirebon (Organisasi)",
+      period:  "Jun 2023 – Feb 2024",
+      desc:    "Managed organizational correspondence and archived 50+ official letters and program proposals. Facilitated 20+ plenary meetings with structured agendas and accurate meeting minutes.",
+    },
   ],
 
   /* ──────────────────────────────────────────────
-     🛠️ TECH STACK
-     Tambah/hapus skill sesuai kemampuan kamu
+     🛠️ TECH STACK & SKILLS
   ────────────────────────────────────────────── */
   stack: [
-    { category: "Languages",          skills: ["Python", "SQL", "JavaScript", "PHP", "HTML & CSS"] },
-    { category: "Frameworks & APIs",  skills: ["React.js", "Laravel", "RESTful APIs", "Node.js"] },
-    { category: "Data & Analytics",   skills: ["Google Analytics", "Meta Insights", "Data Visualization", "MySQL"] },
-    { category: "Cloud & Platforms",  skills: ["Microsoft Azure", "LMS Admin", "Git & GitHub"] },
+    { category: "Programming",        skills: ["Python", "PHP", "JavaScript", "SQL", "HTML & CSS"] },
+    { category: "Frameworks & Tools", skills: ["React.js", "Laravel", "RESTful APIs", "Git & GitHub", "MySQL"] },
+    { category: "Analytics & Ads",    skills: ["Google Analytics", "Meta Insights", "TikTok Analytics", "Google Ads", "Meta Ads", "HubSpot"] },
+    { category: "Design & Creative",  skills: ["Figma", "Canva", "Adobe Photoshop", "Adobe Illustrator", "Adobe Premiere", "CapCut", "Filmora"] },
+    { category: "Productivity",       skills: ["Microsoft Office", "Google Workspace", "Notion", "Jira", "Trello", "Slack", "Zoom"] },
+    { category: "Cloud & AI",         skills: ["Microsoft Azure", "GPT", "Gemini", "Runway", "Firefly", "AI Builders"] },
   ],
 
   /* ──────────────────────────────────────────────
      🎓 SERTIFIKASI
-     icon   = emoji ikon
-     name   = nama sertifikasi
-     issuer = lembaga penerbit
   ────────────────────────────────────────────── */
   certifications: [
-    { icon: "☁️", name: "Microsoft Azure AI Fundamentals",  issuer: "Microsoft — AI-900" },
-    { icon: "📊", name: "Full Stack Data Analyst",           issuer: "RevoU — Comprehensive Data Analytics Program" },
-    { icon: "💻", name: "BNSP Web Development Competency",   issuer: "Badan Nasional Sertifikasi Profesi (BNSP), Indonesia" },
-    { icon: "🎓", name: "Valedictorian / Best Graduate",     issuer: "Informatics Engineering — GPA 3.81/4.00" },
-    // Tambah sertifikasi baru? Salin blok di atas dan paste di sini!
+    { icon: "📊", name: "Full Stack Data Analyst",             issuer: "RevoU — 2024" },
+    { icon: "🐍", name: "Data Analyst with Python & SQL",      issuer: "IBM — 2023" },
+    { icon: "📈", name: "Google Analytics Certification",       issuer: "Google — 2024" },
+    { icon: "☁️", name: "AI Fundamentals (AI-900)",            issuer: "Microsoft Azure — 2024" },
+    { icon: "📣", name: "Inbound Marketing & CRM",             issuer: "HubSpot Academy — 2024" },
+    { icon: "🌐", name: "Junior Web Development",               issuer: "BNSP — Badan Nasional Sertifikasi Profesi — 2022" },
+    { icon: "🔌", name: "Junior Network Administrator",         issuer: "BNSP — Badan Nasional Sertifikasi Profesi — 2022" },
+    { icon: "🗄️", name: "Data Management Staff",               issuer: "BNSP — Badan Nasional Sertifikasi Profesi — 2023" },
   ],
 
   /* ──────────────────────────────────────────────
-     🖼️ SHOWCASE — Hasil Nyata Kamu!
-     Ada 2 tipe:
-
-     TIPE 1 — Foto / Screenshot:
-     {
-       type:  "photo",
-       label: "Kategori",       ← misal: "Kegiatan" / "Screenshot App"
-       title: "Judul",
-       desc:  "Keterangan",
-       image: "nama-file.jpg",  ← taruh foto di folder portfolio
-     }
-
-     TIPE 2 — Project GitHub:
-     {
-       type:  "github",
-       title: "Nama Project",
-       desc:  "Deskripsi project",
-       link:  "https://github.com/username/repo",
-       tags:  ["Laravel", "React"],
-     }
+     🖼️ SHOWCASE
   ────────────────────────────────────────────── */
   showcase: [
     {
@@ -373,14 +400,14 @@ const DATA = {
       label: "Kegiatan",
       title: "I/O Festival UNTAR 2024 — 2nd Place",
       desc:  "Momen menerima penghargaan 2nd Place National Web Development Competition.",
-      image: "",   // ← ganti dengan nama file foto kamu, misal: "lomba.jpg"
+      image: "",
     },
     {
       type:  "photo",
       label: "Screenshot App",
       title: "Web App — Adiva Solution",
       desc:  "Tampilan web application fullstack yang dibangun dengan Laravel & React.js.",
-      image: "",   // ← ganti dengan nama file screenshot kamu, misal: "app.jpg"
+      image: "",
     },
     {
       type:  "github",
@@ -389,7 +416,6 @@ const DATA = {
       link:  "https://github.com/herlytaqotrun/portfolio",
       tags:  ["HTML", "CSS", "JavaScript"],
     },
-    // Tambah item baru? Salin salah satu blok di atas dan paste di sini!
   ],
 
   /* ──────────────────────────────────────────────
