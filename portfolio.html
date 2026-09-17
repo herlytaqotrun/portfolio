@@ -81,19 +81,16 @@
 <!-- FILTER TABS -->
 <div class="filter-wrap">
   <button class="filter-btn active" data-filter="all">All Work</button>
-  <button class="filter-btn" data-filter="web">Web Design</button>
-  <button class="filter-btn" data-filter="product">Product Design</button>
+  <button class="filter-btn" data-filter="website">Website</button>
   <button class="filter-btn" data-filter="graphic">Graphic Design</button>
-  <button class="filter-btn" data-filter="visual">Visual Design</button>
-  <button class="filter-btn" data-filter="copy">Copywriting</button>
-  <button class="filter-btn" data-filter="video">Video Editing</button>
-  <button class="filter-btn" data-filter="marketing">Digital Marketing</button>
+  <button class="filter-btn" data-filter="partnership">Partnership</button>
+  <button class="filter-btn" data-filter="video">Video / Photo</button>
   <button class="filter-btn" data-filter="social">Social Media</button>
 </div>
 
 <div class="container">
   <div class="p-grid" id="pgrid"></div>
-  <div class="empty" id="empty">Belum ada karya di kategori ini.</div>
+  <div class="empty" id="empty">No work in this category yet.</div>
 </div>
 
 <script>
@@ -101,25 +98,25 @@
    ✏️ TAMBAH KARYA KAMU DI SINI!
    Salin satu blok dan edit sesuai karya kamu.
 
-   category: "web" | "product" | "graphic" | "visual" | "copy" | "video" | "marketing" | "social"
+   category: "website" | "graphic" | "partnership" | "video" | "social"
    image: nama file gambar (taruh di folder portfolio) — kosongkan jika belum ada
    link: URL kalau ada link live / GitHub / behance (opsional)
    ===================================================================== */
 const WORKS = [
 
-  // ── WEB DESIGN ───────────────────────────────────
+  // ── WEBSITE ──────────────────────────────────
   {
-    category: "web",
+    category: "website",
     emoji:    "🌐",
     title:    "Portfolio Website",
-    desc:     "Personal portfolio website built with pure HTML, CSS & JavaScript. Dark mode, animated profile ring, skills section.",
+    desc:     "Personal portfolio website built with pure HTML, CSS & JavaScript. Dark mode, animated hero, skills & certifications.",
     tags:     ["HTML", "CSS", "JavaScript"],
     image:    "",
     link:     "https://herlytaqotrun.github.io/portfolio",
     linkText: "View Live →",
   },
   {
-    category: "web",
+    category: "website",
     emoji:    "⚙️",
     title:    "Full-Stack Web App — Adiva Solution",
     desc:     "Enterprise fullstack web application with Laravel backend and React.js frontend. 99% uptime, sub-second API response.",
@@ -129,19 +126,7 @@ const WORKS = [
     linkText: "",
   },
 
-  // ── PRODUCT DESIGN ──────────────────────────────
-  {
-    category: "product",
-    emoji:    "📐",
-    title:    "LMS Platform Design",
-    desc:     "Designed and scaled digital learning management system serving 500+ users with 4.8/5.0 satisfaction score.",
-    tags:     ["UX Design", "LMS", "User Flows"],
-    image:    "",
-    link:     "",
-    linkText: "",
-  },
-
-  // ── GRAPHIC DESIGN ──────────────────────────────
+  // ── GRAPHIC DESIGN ───────────────────────────
   {
     category: "graphic",
     emoji:    "🎨",
@@ -153,31 +138,19 @@ const WORKS = [
     linkText: "",
   },
 
-  // ── VISUAL DESIGN ───────────────────────────────
+  // ── PARTNERSHIP ──────────────────────────────
   {
-    category: "visual",
-    emoji:    "✨",
-    title:    "AI-Enhanced Digital Visuals",
-    desc:     "Digital visuals combining traditional design skills with AI tools (Runway, Firefly, Midjourney) for high-impact media.",
-    tags:     ["Figma", "Canva", "Runway", "Firefly", "AI"],
+    category: "partnership",
+    emoji:    "🤝",
+    title:    "Partnership Projects",
+    desc:     "Collaborative work with brands and organizations — from co-branded campaigns to joint content production.",
+    tags:     ["Collaboration", "Brand Partnership", "Campaign"],
     image:    "",
     link:     "",
     linkText: "",
   },
 
-  // ── COPYWRITING ─────────────────────────────────
-  {
-    category: "copy",
-    emoji:    "✍️",
-    title:    "Web & Marketing Copy",
-    desc:     "SEO-ready web copy, social media captions, and brand messaging that converts and connects with the right audience.",
-    tags:     ["SEO Copywriting", "Brand Copy", "Social Media"],
-    image:    "",
-    link:     "",
-    linkText: "",
-  },
-
-  // ── VIDEO EDITING ───────────────────────────────
+  // ── VIDEO / PHOTO ────────────────────────────
   {
     category: "video",
     emoji:    "🎬",
@@ -188,20 +161,18 @@ const WORKS = [
     link:     "",
     linkText: "",
   },
-
-  // ── DIGITAL MARKETING ───────────────────────────
   {
-    category: "marketing",
-    emoji:    "📊",
-    title:    "Digital Campaign Management",
-    desc:     "Planned and executed digital campaigns across Google Ads and Meta Ads — tracked, optimized, and results-driven.",
-    tags:     ["Google Ads", "Meta Ads", "SEO", "Analytics"],
+    category: "video",
+    emoji:    "📸",
+    title:    "Photography & Visual Content",
+    desc:     "Photo documentation, event photography, and visual storytelling for digital and print media.",
+    tags:     ["Photography", "Photo Editing", "Visual Content"],
     image:    "",
     link:     "",
     linkText: "",
   },
 
-  // ── SOCIAL MEDIA ────────────────────────────────
+  // ── SOCIAL MEDIA ─────────────────────────────
   {
     category: "social",
     emoji:    "📱",
